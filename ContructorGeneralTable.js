@@ -2,7 +2,7 @@ class TableLibrary {
     constructor(params) {
         this.divName = params.divName;
         this.titleTable = params.titleTable;
-        this.apiUrl = `http://lment801.americas.ad.flextronics.com:88/WebAPIGeneral/api/dynamic?@procedureName=${params.storeProcedureName}&@kind=${params.kind}`;
+        this.apiUrl = `http://lment801.americas.ad.flextronics.com:88/WebAPIGeneral/api/dynamic?@procedureName=p_Materials.dbo.[SP_PalletPositionHistory]&@kind=4`;
     }
 
     async fetchData() {
