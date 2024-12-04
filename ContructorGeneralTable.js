@@ -5,15 +5,19 @@ class TableLibrary {
         this.apiUrl = `http://lment801.americas.ad.flextronics.com:88/WebAPIGeneral/api/dynamic?@procedureName=${params.storeProcedureName}&@kind=${params.kind}`;
     }
 
+    // Método para simular datos
     async fetchData() {
-        try {
-            const response = await fetch(this.apiUrl);
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            return null;
-        }
+        // Simulación de datos en lugar de una llamada API real
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const data = [
+                    { id: 1, name: 'Pallet A', position: 'Warehouse 1' },
+                    { id: 2, name: 'Pallet B', position: 'Warehouse 2' },
+                    { id: 3, name: 'Pallet C', position: 'Warehouse 3' }
+                ];
+                resolve(data);
+            }, 1000); // Simula una demora de 1 segundo
+        });
     }
 
     createTable(data) {
@@ -74,13 +78,3 @@ class TableLibrary {
         this.createTable(data);
     }
 }
-
-// Ejemplo de uso:
-const tabla1Params = {
-    divName: 'table-container',
-    titleTable: 'Pallet Position History',
-    kind: 4,
-    storeProcedureName: 'p_Materials.dbo.[SP_PalletPositionHistory]'
-};
-const tabla1 = new TableLibrary(tabla1Params);
-tabla1.renderTable();
